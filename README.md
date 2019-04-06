@@ -20,7 +20,7 @@ Beautiful UITabBarView inspired by [this](https://dribbble.com/shots/4844696-Tab
 VBRRollingPit is available on [CocoaPods](http://cocoapods.org). Just add the following to your project Podfile:
 
 ```ruby
-pod 'VBRRollingPit'
+pod 'VBRRollingPit', :git => 'https://github.com/AISayeh/VBRRollingPit.git'
 ```
 
 Or from GitHub:
