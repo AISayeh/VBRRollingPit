@@ -243,7 +243,7 @@ extension CGFloat {
         itemView.alpha = 0
         itemView.isHidden = false
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400) , execute: {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(100) , execute: {
             UIView.animate(withDuration: TimeInterval(self.animationDuration)) {
                 itemView.alpha = 1
             }
