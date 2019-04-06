@@ -20,7 +20,13 @@ extension CGFloat {
 @IBDesignable class RollingPitTabBar: UITabBar {
     
     
-    @IBInspectable public var animationDuration : CGFloat = 1.0
+    @IBInspectable public var animationDuration : CGFloat = 1.0 {
+        didSet {
+            if (animationDuration < 0.2) {
+                animationDuration = 0.2
+            }
+        }
+    }
     
     @IBInspectable public var barBackColor : UIColor = UIColor.white
     @IBInspectable public var barHeight : CGFloat = 65
@@ -238,7 +244,7 @@ extension CGFloat {
         itemView.isHidden = false
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400) , execute: {
-            UIView.animate(withDuration: 0.4) {
+            UIView.animate(withDuration: TimeInterval(self.animationDuration)) {
                 itemView.alpha = 1
             }
         })
@@ -247,7 +253,7 @@ extension CGFloat {
     }
     private func createPathMoveAnimation(toVal : CGPath) -> CABasicAnimation{
         let animation = CABasicAnimation(keyPath: "path")
-        animation.duration = self.animationDuration <  0.2 ? 0.2 : self.animationDuration
+        animation.duration = CFTimeInterval(self.animationDuration)
 //        animation.beginTime = CACurrentMediaTime() + 2
         animation.toValue = toVal
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -365,6 +371,3 @@ extension CGFloat {
     
     
 }
-
-
-
